@@ -1,53 +1,50 @@
 let pares = 0;
-
+let opcoesGif = [
+  './img/bobrossparrot.gif',
+  './img/explodyparrot.gif',
+  './img/fiestaparrot.gif',
+  './img/metalparrot.gif',
+  './img/revertitparrot.gif',
+  './img/tripletsparrot.gif',
+  './img/unicornparrot.gif'
+]
 function modoJogo() {
     pares = prompt('Com quantas cartas você deseja jogar? (números pares entre 4 e 14)');
+    pares = Number(pares);
 }
 modoJogo();
-
-// max 14 second prompt for letting the user know
 
 while (pares < 4 || pares%2 !== 0 || pares > 14) {
         modoJogo();
     }
-console.log(pares);
 
 //randomizador 
 function comparador() { 
 	return Math.random() - 0.5; 
 }
 
-let qtdeCards = ['oi', 'ola'];
-let cardSelecionado = [];
-function clonaArray () {
-    cardSelecionado = [...qtdeCards];
-    console.log(cardSelecionado);
+let deck = [];
+const numPares = Number(pares/2);
+for (let i = 0; i < numPares; i++){
+  deck.push(opcoesGif[i]);
+  deck.push(opcoesGif[i]);
 }
 
-clonaArray ();
+console.log(deck);
 
-let deck = [];
-deck.push.apply(deck, qtdeCards);
-deck.push.apply(deck, cardSelecionado);
+deck.sort(comparador);
 
-console.log(deck.length);
-
-const opcoesGif = ['bobross', 'explody', 'fiesta', 'metal', 'revertit', 'triplets', 'unicorn'];
-
-
-
-let teste;
+let imgJogo;
 
 function addImg () {
-    //teste = document.querySelector('main');
     for(let i = 0; i < pares; i++) {
-        teste = document.querySelector('main');
-    teste.innerHTML += `<div class="card">
+        imgJogo = document.querySelector('main');
+    imgJogo.innerHTML += `<div class="card">
     <div class="front-face face" onclick="rotacionaCarta(this)">
       <img class="imgVerso" src="./img/back.png" alt="">
     </div>
     <div class="back-face face">
-      <img class="gifReveal" src="./img/bobrossparrot.gif" alt="">
+      <img class="gifReveal" src="${deck[i]}" alt="">
     </div>
   </div>`
 }
@@ -55,13 +52,3 @@ function addImg () {
 
 addImg ();
 
-
-
-
-
-
-
-
-/*function rotacionaCarta(cartaRotacionada) {
-    console.log(cartaRotacionada);
-}*/
