@@ -50,22 +50,29 @@ function addImg() {
       </div>
     </div>`;
 
-  imgJogo.innerHTML += cardAdd;
+    imgJogo.innerHTML += cardAdd;
   }
-  
 }
 
 addImg();
 
 function rotacionaCarta(cardRevelado) {
-  const revelado = cardRevelado.querySelector('.front-face');
-  const escondido = cardRevelado.querySelector('.back-face');
-    
-  const rotacionado = cardRevelado.querySelectorAll('.front-face .cardRotacionado');
-  console.log(rotacionado);
-    // se uma ou nenhuma carta foi virada e se o elemento clicado não foi virado ainda{}
-    revelado.classList.add('cardRotacionado');
-    escondido.classList.add('gifRevelado');
+  const revelado = cardRevelado.querySelector(".front-face");
+  const escondido = cardRevelado.querySelector(".back-face");
+  // se uma ou nenhuma carta foi virada e se o elemento clicado não foi virado ainda{}
 
+  const rotacionado = document.querySelectorAll('[class*="cardRotacionado"]');
+  console.log(rotacionado.length);
+  
+
+  if(rotacionado.length <= 1 && cardRevelado.contains('.cardRotacionado') == false){
+  revelado.classList.add("cardRotacionado");
+  escondido.classList.add("gifRevelado");
+  }
+
+  // if (cardRevelado.length <= 1 && cardRevelado.contains('.cardRotacionado') == false){
+  //   revelado.classList.add("cardRotacionado");
+  //   escondido.classList.add("gifRevelado");
+  // }
+  
 }
-
