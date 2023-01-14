@@ -1,40 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
 body {
-    background-color: #EEF9BF;
+  background-color: #eef9bf;
 }
 
 header {
-    width: 100vw;
-    height: 150px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100vw;
+  height: 150px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header h1 {
-    color: #75B79E;
-    font-size: 56px;
-    font-weight: 700;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: -0.004em;
-
+  color: #75b79e;
+  font-size: 56px;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: -0.004em;
 }
 
 .card {
-    width: 117px;
-    height: 146px;
-    position: relative;
-    margin-bottom: 55px;
-    /* display: inline-flex; */
-  }
+  width: 117px;
+  height: 146px;
+  position: relative;
+  margin-bottom: 55px;
+  /* display: inline-flex; */
+}
 
 .imgVerso {
-    width: 100px;
+  width: 100px;
 }
 
 .gifReveal {
-    width: 100px;
+  width: 100px;
 }
 
 main {
@@ -47,28 +46,28 @@ main {
 }
 
 .face {
-    width: 100%;
-    height: 100%;
-    background-color: #A7E9AF;
-    border-radius: 10px;
-    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    backface-visibility: hidden;
-    transition: all .5s;
-    transform-style: preserve-3d;
-  }
+  width: 100%;
+  height: 100%;
+  background-color: #a7e9af;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: all 0.5s;
+  transform-style: preserve-3d;
+}
 
-  .back-face {
-    transform: rotateY(180deg);
-  }
+.back-face {
+  transform: rotateY(180deg);
+}
 
-  .card:hover .back-face {
-    transform: rotateY(0deg);
-  }
+.gifRevelado {
+  transform: rotateY(0deg);
+}
 
-  .card:hover .front-face {
-    transform: rotateY(-180deg);
-  }
+.cardRotacionado {
+  transform: rotateY(-180deg);
+}
