@@ -41,60 +41,58 @@ function addImg() {
   for (let i = 0; i < pares; i++) {
     imgJogo = document.querySelector("main");
     let cardAdd = `
-    <div class="card" onclick="rotacionaCarta(this)">
-      <div class="front-face face">
-        <img class="imgVerso" src="./img/back.png" alt="">
-      </div>
-      <div class="back-face face">
-        <img class="gifReveal" src="${deck[i]}" alt="">
-      </div>
+    <div class="card">
+        <img class="front-face face" src="./img/back.png" alt="">
+        <img class="back-face face" src="${deck[i]}" alt="">
     </div>`;
 
     imgJogo.innerHTML += cardAdd;
   }
 }
-
 addImg();
 
-function rotacionaCarta(cardRevelado) {
-  const revelado = cardRevelado.querySelector(".front-face");
-  const escondido = cardRevelado.querySelector(".back-face");
+const cards = document.querySelectorAll(".card");
+function rotacionaCard() {
+  let selecionado = document.querySelectorAll(".selecionado");
 
-  const rotacionado = document.querySelectorAll('[class*="cardRotacionado"]');
-  
+  if (
+    selecionado.length <= 1 &&
+    this.classList.contains("selecionado") == false
+  ) {
+    this.classList.add("cardRotacionado");
+    this.classList.add("selecionado");
+    setTimeout(confere, 1500);
+  }
+}
 
-  cardRevelado.classList.add("selecionado");
-  
+cards.forEach((card) => card.addEventListener("click", rotacionaCard));
 
-  const selecionado = document.querySelectorAll('.selecionado');
-  console.log(selecionado);
-  
-  if (selecionado.length <= 2) {
-    revelado.classList.add("cardRotacionado");
-    escondido.classList.add("gifRevelado");
-    const comparaGifs = document.querySelectorAll(".gifRevelado");
-    if (selecionado.length === 2) {
-      const rotacionado = document.querySelectorAll(
-        '[class*="cardRotacionado"]'
-      );
-      function errou(){
-        comparaGifs[0].classList.remove("gifRevelado");
-        rotacionado[0].classList.remove("cardRotacionado");
-        comparaGifs[1].classList.remove("gifRevelado");
-        rotacionado[1].classList.remove("cardRotacionado");
-        selecionado[0].classList.remove('selecionado');
-        selecionado[1].classList.remove('selecionado');
-      }
-      if (
-        comparaGifs[0].querySelector("img").src !=
-        comparaGifs[1].querySelector("img").src
-      ) {
-        setTimeout(errou, 1500);
-      }else{
-        selecionado[0].classList.remove('selecionado');
-        selecionado[1].classList.remove('selecionado');
-    }
+let cliques = 0;
+function confere() {
+  let selecionado = document.querySelectorAll(".selecionado");
+  if (selecionado.length === 2) {
+    if (
+      selecionado[0].querySelector(".back-face").src !=
+      selecionado[1].querySelector(".back-face").src
+    ) {
+      selecionado[0].classList.remove("cardRotacionado");
+      selecionado[0].classList.remove("selecionado");
+      selecionado[1].classList.remove("cardRotacionado");
+      selecionado[1].classList.remove("selecionado");
+      cliques += 2;
+    } else {
+      selecionado[0].classList.remove("selecionado");
+      selecionado[1].classList.remove("selecionado");
+      cliques += 2;
+      encerra();
     }
   }
 }
 
+function encerra() {
+  let acertos = document.querySelectorAll(".cardRotacionado");
+  console.log(cliques);
+  if (acertos.length == pares) {
+    alert(`Você ganhou em ${cliques} jogadas!`);
+  }
+}

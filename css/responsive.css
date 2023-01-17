@@ -1,0 +1,29 @@
+@media (max-width: 414px) {
+  header {
+    width: 100vw;
+    height: 70px;
+    margin-top: 40px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header h1 {
+    color: #75b79e;
+    font-size: 36px;
+    line-height: 42px;
+    font-weight: 700;
+    font-family: "Roboto", sans-serif;
+    letter-spacing: -0.004em;
+    text-align: center;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}
