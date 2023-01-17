@@ -41,9 +41,9 @@ function addImg() {
   for (let i = 0; i < pares; i++) {
     imgJogo = document.querySelector("main");
     let cardAdd = `
-    <div class="card">
-        <img class="front-face face" src="./img/back.png" alt="">
-        <img class="back-face face" src="${deck[i]}" alt="">
+    <div class="card" data-test="card">
+        <img class="front-face face" data-test="face-down-image" src="./img/back.png" alt="">
+        <img class="back-face face" data-test="face-up-image" src="${deck[i]}" alt="">
     </div>`;
 
     imgJogo.innerHTML += cardAdd;
